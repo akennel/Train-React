@@ -1,0 +1,54 @@
+[
+    {
+        "Line_ID": "AIR",
+        "Line_Name": "Airport"
+    },
+    {
+        "Line_ID": "CHE",
+        "Line_Name": "Chestnut Hill East"
+    },
+    {
+        "Line_ID": "CHW",
+        "Line_Name": "Chestnut Hill West"
+    },
+    {
+        "Line_ID": "CYN",
+        "Line_Name": "Cynwyd"
+    },
+    {
+        "Line_ID": "FOX",
+        "Line_Name": "Fox Chase"
+    },
+    {
+        "Line_ID": "LAN",
+        "Line_Name": "Lansdale/Doylestown"
+    },
+    {
+        "Line_ID": "MED",
+        "Line_Name": "Media/Elwyn"
+    },
+    {
+        "Line_ID": "NOR",
+        "Line_Name": "Manayunk/Norristown"
+    },
+    {
+        "Line_ID": "PAO",
+        "Line_Name": "Paoli/Thorndale"
+    },
+    {
+        "Line_ID": "WAR",
+        "Line_Name": "Warminster"
+    },
+    {
+        "Line_ID": "WIL",
+        "Line_Name": "Wilmington/Newark"
+    },
+    {
+        "Line_ID": "WTR",
+        "Line_Name": "West Trenton"
+    },
+    {
+        "Line_ID": "TRE",
+        "Line_Name": "Trenton"
+    }
+]  

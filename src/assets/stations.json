@@ -1,0 +1,757 @@
+[
+    {
+        "Station_ID": 90004,
+        "Station_Line": "AIR, CHE, CHW, CYN, FOX, LAN, MED, NOR, PAO, WAR, WIL, WTR, TRE",
+        "Station_Name": "30th Street Station"
+    },
+    {
+        "Station_ID": 90005,
+        "Station_Line": "AIR, CHE, CHW, CYN, FOX, LAN, MED, NOR, PAO, WAR, WIL, WTR, TRE",
+        "Station_Name": "Suburban Station"
+    },
+        {
+        "Station_ID": 90006,
+        "Station_Line": "AIR, CHE, CHW, FOX, LAN, MED, NOR, PAO, WAR, WIL, WTR, TRE",
+        "Station_Name": "Market East"
+    },
+    {
+        "Station_ID": 90007,
+        "Station_Line": "AIR, CHE, CHW, FOX, LAN, MED, NOR, PAO, WAR, WIL, WTR, TRE",
+        "Station_Name": "Temple U"
+    },
+    {
+        "Station_ID": 90314,
+        "Station_Line": "MED",
+        "Station_Name": "49th St"
+    },
+    {
+        "Station_ID": 90539,
+        "Station_Line": "LAN",
+        "Station_Name": "9th St"
+    },
+    {
+        "Station_ID": 90404,
+        "Station_Line": "AIR",
+        "Station_Name": "Airport Terminal A"
+    },
+    {
+        "Station_ID": 90403,
+        "Station_Line": "AIR",
+        "Station_Name": "Airport Terminal B"
+    },
+    {
+        "Station_ID": 90402,
+        "Station_Line": "AIR",
+        "Station_Name": "Airport Terminal C-D"
+    },
+    {
+        "Station_ID": 90401,
+        "Station_Line": "AIR",
+        "Station_Name": "Airport Terminal E-F"
+    },
+    {
+        "Station_ID": 90208,
+        "Station_Line": "NOR",
+        "Station_Name": "Allegheny"
+    },
+    {
+        "Station_ID": 90804,
+        "Station_Line": "CHW",
+        "Station_Name": "Allen Lane"
+    },
+    {
+        "Station_ID": 90526,
+        "Station_Line": "LAN",
+        "Station_Name": "Ambler"
+    },
+    {
+        "Station_ID": 90313,
+        "Station_Line": "MED",
+        "Station_Name": "Angora"
+    },
+    {
+        "Station_ID": 90518,
+        "Station_Line": "PAO",
+        "Station_Name": "Ardmore"
+    },
+    {
+        "Station_ID": 90412,
+        "Station_Line": "WAR",
+        "Station_Name": "Ardsley"
+    },
+    {
+        "Station_ID": 90002,
+        "Station_Line": "CYN",
+        "Station_Name": "Bala"
+    },
+    {
+        "Station_ID": 90508,
+        "Station_Line": "PAO",
+        "Station_Name": "Berwyn"
+    },
+    {
+        "Station_ID": 90318,
+        "Station_Line": "WTR",
+        "Station_Name": "Bethayres"
+    },
+    {
+        "Station_ID": 90710,
+        "Station_Line": "TRE",
+        "Station_Name": "Bridesburg"
+    },
+    {
+        "Station_ID": 90703,
+        "Station_Line": "TRE",
+        "Station_Name": "Bristol"
+    },
+    {
+        "Station_ID": 90516,
+        "Station_Line": "PAO",
+        "Station_Name": "Bryn Mawr"
+    },
+    {
+        "Station_ID": 90805,
+        "Station_Line": "CHW",
+        "Station_Name": "Carpenter"
+    },
+    {
+        "Station_ID": 90535,
+        "Station_Line": "LAN",
+        "Station_Name": "Chalfont"
+    },
+    {
+        "Station_ID": 90808,
+        "Station_Line": "CHW",
+        "Station_Name": "Chelten Avenue"
+    },
+    {
+        "Station_ID": 90813,
+        "Station_Line": "FOX",
+        "Station_Name": "Cheltenham"
+    },
+    {
+        "Station_ID": 90207,
+        "Station_Line": "WIL",
+        "Station_Name": "Chester TC"
+    },
+    {
+        "Station_ID": 90720,
+        "Station_Line": "CHE",
+        "Station_Name": "Chestnut Hill East"
+    },
+    {
+        "Station_ID": 90801,
+        "Station_Line": "CHW",
+        "Station_Name": "Chestnut Hill West"
+    },
+    {
+        "Station_ID": 90204,
+        "Station_Line": "WIL",
+        "Station_Name": "Claymont"
+    },
+    {
+        "Station_ID": 90309,
+        "Station_Line": "MED",
+        "Station_Name": "Clifton-Aldan"
+    },
+    {
+        "Station_ID": 90533,
+        "Station_Line": "LAN",
+        "Station_Name": "Colmar"
+    },
+    {
+        "Station_ID": 90225,
+        "Station_Line": "NOR",
+        "Station_Name": "Conshohocken"
+    },
+    {
+        "Station_ID": 90706,
+        "Station_Line": "TRE",
+        "Station_Name": "Cornwells Heights"
+    },
+    {
+        "Station_ID": 90414,
+        "Station_Line": "WAR",
+        "Station_Name": "Crestmont"
+    },
+    {
+        "Station_ID": 90704,
+        "Station_Line": "TRE",
+        "Station_Name": "Croydon"
+    },
+    {
+        "Station_ID": 90209,
+        "Station_Line": "WIL",
+        "Station_Name": "Crum Lynne"
+    },
+    {
+        "Station_ID": 90216,
+        "Station_Line": "WIL",
+        "Station_Name": "Curtis Park"
+    },
+    {
+        "Station_ID": 90001,
+        "Station_Line": "CYN",
+        "Station_Name": "Cynwyd"
+    },
+    {
+        "Station_ID": 90507,
+        "Station_Line": "PAO",
+        "Station_Name": "Daylesford"
+    },
+    {
+        "Station_ID": 90217,
+        "Station_Line": "WIL",
+        "Station_Name": "Darby"
+    },
+    {
+        "Station_ID": 90537,
+        "Station_Line": "LAN",
+        "Station_Name": "Delaware Valley College"
+    },
+    {
+        "Station_ID": 90509,
+        "Station_Line": "PAO",
+        "Station_Name": "Devon"
+    },
+    {
+        "Station_ID": 90502,
+        "Station_Line": "PAO",
+        "Station_Name": "Downingtown"
+    },
+    {
+        "Station_ID": 90538,
+        "Station_Line": "LAN",
+        "Station_Name": "Doylestown"
+    },
+    {
+        "Station_ID": 90219,
+        "Station_Line": "NOR",
+        "Station_Name": "East Falls"
+    },
+    {
+        "Station_ID": 90405,
+        "Station_Line": "AIR",
+        "Station_Name": "Eastwick Station"
+    },
+    {
+        "Station_ID": 90705,
+        "Station_Line": "TRE",
+        "Station_Name": "Eddington"
+    },
+    {
+        "Station_ID": 90208,
+        "Station_Line": "WIL",
+        "Station_Name": "Eddystone"
+    },
+    {
+        "Station_ID": 90409,
+        "Station_Line": "LAN, WAR, WTR",
+        "Station_Name": "Elkins Park"
+    },
+    {
+        "Station_ID": 90228,
+        "Station_Line": "NOR",
+        "Station_Name": "Elm St"
+    },
+    {
+        "Station_ID": 90301,
+        "Station_Line": "MED",
+        "Station_Name": "Elwyn Station"
+    },
+    {
+        "Station_ID": 90504,
+        "Station_Line": "PAO",
+        "Station_Name": "Exton"
+    },
+    {
+        "Station_ID": 90407,
+        "Station_Line": "LAN, WAR, WTR",
+        "Station_Name": "Fern Rock TC"
+    },
+    {
+        "Station_ID": 90312,
+        "Station_Line": "MED",
+        "Station_Name": "Fernwood"
+    },
+    {
+        "Station_ID": 90214,
+        "Station_Line": "WIL",
+        "Station_Name": "Folcroft"
+    },
+    {
+        "Station_ID": 90320,
+        "Station_Line": "WTR",
+        "Station_Name": "Forest Hills"
+    },
+    {
+        "Station_ID": 90525,
+        "Station_Line": "LAN",
+        "Station_Name": "Ft Washington"
+    },
+    {
+        "Station_ID": 90532,
+        "Station_Line": "LAN",
+        "Station_Name": "Fortuna"
+    },
+    {
+        "Station_ID": 90815,
+        "Station_Line": "FOX",
+        "Station_Name": "Fox Chase"
+    },
+    {
+        "Station_ID": 90713,
+        "Station_Line": "CHE",
+        "Station_Name": "Germantown"
+    },
+    {
+        "Station_ID": 90310,
+        "Station_Line": "MED",
+        "Station_Name": "Gladstone"
+    },
+    {
+        "Station_ID": 90213,
+        "Station_Line": "WIL",
+        "Station_Name": "Glenolden"
+    },
+    {
+        "Station_ID": 90411,
+        "Station_Line": "WAR, LAN",
+        "Station_Name": "Glenside"
+    },
+    {
+        "Station_ID": 90719,
+        "Station_Line": "CHE",
+        "Station_Name": "Gravers"
+    },
+    {
+        "Station_ID": 90528,
+        "Station_Line": "LAN",
+        "Station_Name": "Gwynedd Valley"
+    },
+    {
+        "Station_ID": 90416,
+        "Station_Line": "WAR",
+        "Station_Name": "Hatboro"
+    },
+    {
+        "Station_ID": 90517,
+        "Station_Line": "PAO",
+        "Station_Name": "Haverford"
+    },
+    {
+        "Station_ID": 90206,
+        "Station_Line": "WIL",
+        "Station_Name": "Highland Ave"
+    },
+    {
+        "Station_ID": 90802,
+        "Station_Line": "CHE",
+        "Station_Name": "Highland"
+    },
+    {
+        "Station_ID": 90708,
+        "Station_Line": "TRE",
+        "Station_Name": "Holmesburg Jct"
+    },
+    {
+        "Station_ID": 90222,
+        "Station_Line": "NOR",
+        "Station_Name": "Ivy Ridge"
+    },
+    {
+        "Station_ID": 90410,
+        "Station_Line": "LAN, WAR, WTR",
+        "Station_Name": "Jenkintown-Wyncote"
+    },
+    {
+        "Station_ID": 90324,
+        "Station_Line": "WTR",
+        "Station_Name": "Langhorne"
+    },
+    {
+        "Station_ID": 90531,
+        "Station_Line": "LAN",
+        "Station_Name": "Lansdale"
+    },
+    {
+        "Station_ID": 90311,
+        "Station_Line": "MED",
+        "Station_Name": "Lansdowne"
+    },
+    {
+        "Station_ID": 90812,
+        "Station_Line": "FOX",
+        "Station_Name": "Lawndale"
+    },
+    {
+        "Station_ID": 90702,
+        "Station_Line": "TRE",
+        "Station_Name": "Levittown"
+    },
+    {
+        "Station_ID": 90534,
+        "Station_Line": "LAN",
+        "Station_Name": "Link Belt"
+    },
+    {
+        "Station_ID": 90227,
+        "Station_Line": "NOR",
+        "Station_Name": "Main St"
+    },
+    {
+        "Station_ID": 90505,
+        "Station_Line": "PAO",
+        "Station_Name": "Malvern"
+    },
+    {
+        "Station_ID": 90221,
+        "Station_Line": "NOR",
+        "Station_Name": "Manayunk East"
+    },
+    {
+        "Station_ID": 90205,
+        "Station_Line": "WIL",
+        "Station_Name": "Marcus Hook"
+    },
+    {
+        "Station_ID": 90317,
+        "Station_Line": "WTR",
+        "Station_Name": "Meadowbrook"
+    },
+    {
+        "Station_ID": 90302,
+        "Station_Line": "MED",
+        "Station_Name": "Media"
+    },
+    {
+        "Station_ID": 90408,
+        "Station_Line": "LAN, WAR, WTR",
+        "Station_Name": "Melrose Park"
+    },
+    {
+        "Station_ID": 90521,
+        "Station_Line": "PAO",
+        "Station_Name": "Merion"
+    },
+    {
+        "Station_ID": 90223,
+        "Station_Line": "NOR",
+        "Station_Name": "Miquon"
+    },
+    {
+        "Station_ID": 90306,
+        "Station_Line": "MED",
+        "Station_Name": "Morton"
+    },
+    {
+        "Station_ID": 90303,
+        "Station_Line": "MED",
+        "Station_Name": "Moylan-Rose Valley"
+    },
+    {
+        "Station_ID": 90717,
+        "Station_Line": "CHE",
+        "Station_Name": "Mt Airy"
+    },
+    {
+        "Station_ID": 90520,
+        "Station_Line": "PAO",
+        "Station_Name": "Narberth"
+    },
+    {
+        "Station_ID": 90323,
+        "Station_Line": "WTR",
+        "Station_Name": "Neshaminy Falls"
+    },
+    {
+        "Station_ID": 90536,
+        "Station_Line": "LAN",
+        "Station_Name": "New Britain"
+    },
+    {
+        "Station_ID": 90201,
+        "Station_Line": "WIL",
+        "Station_Name": "Newark"
+    },
+    {
+        "Station_ID": 90226,
+        "Station_Line": "NOR",
+        "Station_Name": "Norristown TC"
+    },
+    {
+        "Station_ID": 90008,
+        "Station_Line": "NOR, LAN",
+        "Station_Name": "North Broad St"
+    },
+    {
+        "Station_ID": 90523,
+        "Station_Line": "LAN",
+        "Station_Name": "North Hills"
+    },
+    {
+        "Station_ID": 90711,
+        "Station_Line": "CHW, TRE",
+        "Station_Name": "North Philadelphia"
+    },
+    {
+        "Station_ID": 90529,
+        "Station_Line": "LAN",
+        "Station_Name": "North Wales"
+    },
+    {
+        "Station_ID": 90212,
+        "Station_Line": "WIL",
+        "Station_Name": "Norwood"
+    },
+    {
+        "Station_ID": 90811,
+        "Station_Line": "FOX",
+        "Station_Name": "Olney"
+    },
+    {
+        "Station_ID": 90524,
+        "Station_Line": "LAN",
+        "Station_Name": "Oreland"
+    },
+    {
+        "Station_ID": 90522,
+        "Station_Line": "PAO",
+        "Station_Name": "Overbrook"
+    },
+    {
+        "Station_ID": 90506,
+        "Station_Line": "PAO",
+        "Station_Name": "Paoli"
+    },
+    {
+        "Station_ID": 90527,
+        "Station_Line": "LAN",
+        "Station_Name": "Penllyn"
+    },
+    {
+        "Station_ID": 90530,
+        "Station_Line": "LAN",
+        "Station_Name": "Pennbrook"
+    },
+    {
+        "Station_ID": 90319,
+        "Station_Line": "WTR",
+        "Station_Name": "Philmont"
+    },
+    {
+        "Station_ID": 90308,
+        "Station_Line": "MED",
+        "Station_Name": "Primos"
+    },
+    {
+        "Station_ID": 90211,
+        "Station_Line": "WIL",
+        "Station_Name": "Prospect Park"
+    },
+    {
+        "Station_ID": 90809,
+        "Station_Line": "CHW",
+        "Station_Name": "Queen Lane"
+    },
+    {
+        "Station_ID": 90513,
+        "Station_Line": "PAO",
+        "Station_Name": "Radnor"
+    },
+    {
+        "Station_ID": 90210,
+        "Station_Line": "WIL",
+        "Station_Name": "Ridley Park"
+    },
+    {
+        "Station_ID": 90515,
+        "Station_Line": "PAO",
+        "Station_Name": "Rosemont"
+    },
+    {
+        "Station_ID": 90413,
+        "Station_Line": "WAR",
+        "Station_Name": "Roslyn"
+    },
+    {
+        "Station_ID": 90316,
+        "Station_Line": "WTR",
+        "Station_Name": "Rydal"
+    },
+    {
+        "Station_ID": 90814,
+        "Station_Line": "FOX",
+        "Station_Name": "Ryers"
+    },
+    {
+        "Station_ID": 90307,
+        "Station_Line": "MED",
+        "Station_Name": "Secane"
+    },
+    {
+        "Station_ID": 90215,
+        "Station_Line": "WIL",
+        "Station_Name": "Sharon Hill"
+    },
+    {
+        "Station_ID": 90321,
+        "Station_Line": "WTR",
+        "Station_Name": "Somerton"
+    },
+    {
+        "Station_ID": 90224,
+        "Station_Line": "NOR",
+        "Station_Name": "Spring Mill"
+    },
+    {
+        "Station_ID": 90512,
+        "Station_Line": "PAO",
+        "Station_Name": "St. Davids"
+    },
+    {
+        "Station_ID": 90803,
+        "Station_Line": "CHW",
+        "Station_Name": "St. Martins"
+    },
+    {
+        "Station_ID": 90715,
+        "Station_Line": "CHE",
+        "Station_Name": "Stenton"
+    },
+    {
+        "Station_ID": 90510,
+        "Station_Line": "PAO",
+        "Station_Name": "Strafford"
+    },
+    {
+        "Station_ID": 90305,
+        "Station_Line": "MED",
+        "Station_Name": "Swarthmore"
+    },
+    {
+        "Station_ID": 90709,
+        "Station_Line": "TRE",
+        "Station_Name": "Tacony"
+    },
+    {
+        "Station_ID": 90501,
+        "Station_Line": "PAO",
+        "Station_Name": "Thorndale"
+    },
+    {
+        "Station_ID": 90707,
+        "Station_Line": "TRE",
+        "Station_Name": "Torresdale"
+    },
+    {
+        "Station_ID": 90701,
+        "Station_Line": "TRE",
+        "Station_Name": "Trenton"
+    },
+    {
+        "Station_ID": 90322,
+        "Station_Line": "WTR",
+        "Station_Name": "Trevose"
+    },
+    {
+        "Station_ID": 90807,
+        "Station_Line": "CHW",
+        "Station_Name": "Tulpehocken"
+    },
+    {
+        "Station_ID": 90406,
+        "Station_Line": "AIR, MED, WAR, WTR, WIL",
+        "Station_Name": "University City"
+    },
+    {
+        "Station_ID": 90806,
+        "Station_Line": "CHW",
+        "Station_Name": "Upsal"
+    },
+    {
+        "Station_ID": 90514,
+        "Station_Line": "PAO",
+        "Station_Name": "Villanova"
+    },
+    {
+        "Station_ID": 90304,
+        "Station_Line": "MED",
+        "Station_Name": "Wallingford"
+    },
+    {
+        "Station_ID": 90417,
+        "Station_Line": "WAR",
+        "Station_Name": "Warminster"
+    },
+    {
+        "Station_ID": 90714,
+        "Station_Line": "CHE",
+        "Station_Name": "Washington Lane"
+    },
+    {
+        "Station_ID": 90009,
+        "Station_Line": "CHE, FOX, LAN, WAR, WTR",
+        "Station_Name": "Wayne Jct"
+    },
+    {
+        "Station_ID": 90511,
+        "Station_Line": "PAO",
+        "Station_Name": "Wayne"
+    },
+    {
+        "Station_ID": 90327,
+        "Station_Line": "WTR",
+        "Station_Name": "West Trenton"
+    },
+    {
+        "Station_ID": 90503,
+        "Station_Line": "PAO",
+        "Station_Name": "Whitford"
+    },
+    {
+        "Station_ID": 90514,
+        "Station_Line": "WAR",
+        "Station_Name": "Willow Grove"
+    },
+    {
+        "Station_ID": 90203,
+        "Station_Line": "WIL",
+        "Station_Name": "Wilmington"
+    },
+    {
+        "Station_ID": 90220,
+        "Station_Line": "NOR",
+        "Station_Name": "Wissahickon"
+    },
+    {
+        "Station_ID": 90712,
+        "Station_Line": "CHE",
+        "Station_Name": "Wister"
+    },
+    {
+        "Station_ID": 90325,
+        "Station_Line": "WTR",
+        "Station_Name": "Woodbourne"
+    },
+    {
+        "Station_ID": 90718,
+        "Station_Line": "CHE",
+        "Station_Name": "Wyndmoor"
+    },
+    {
+        "Station_ID": 90003,
+        "Station_Line": "CYN",
+        "Station_Name": "Wynnefield Avenue"
+    },
+    {
+        "Station_ID": 90519,
+        "Station_Line": "PAO",
+        "Station_Name": "Wynnewood"
+    },
+    {
+        "Station_ID": 90326,
+        "Station_Line": "WTR",
+        "Station_Name": "Yardley"
+    }
+]
