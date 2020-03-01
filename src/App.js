@@ -37,49 +37,56 @@ function ConfigScreen(showConfig, line, homeStation, workStation, setHomeStation
     setShowConfig(false);
   }
 
+  function discardChanges() {
+    window.location.reload(false);
+  }
+
   if (!showConfig) {
     return<React.Fragment></React.Fragment>
   }
   else {
   return(
     <div className="bg-gray-400 pr-2 pl-2 pt-2 pb-2 shadow-md">
-      <div className="flex items-stretch pb-5">
+      <div className="flex items-stretch pb-8">
         <span className="flex text-blue-900 font-bold text-md w-2/6">
         Line
         </span>
         <span className="flex w-4/6 justify-end">
-          <select onChange={(event)=>{changeLine(event)}} defaultValue={line} className="">
+          <select onChange={(event)=>{changeLine(event)}} defaultValue={line}>
             {lines.map(l=>(
               <option key={l.Line_ID} id={l.Line_ID} value={l.Line_ID}>{l.Line_Name}</option>
             ))}
           </select>
         </span>
       </div>
-      <div className="flex items-stretch pb-5">
+      <div className="flex items-stretch pb-8 ">
         <span className="flex text-blue-900 font-bold text-md w-2/6">
         Work Station
         </span>
         <span className="flex w-4/6 justify-end">
-          <select onChange={(event)=>{setWorkStation(event.target.value)}} defaultValue={workStation}>
+          <select onChange={(event)=>{setWorkStation(event.target.value)}} defaultValue={workStation} >
             {workStations.map(station=>(
               <option key={station.Station_ID} value={station.Station_Name}>{station.Station_Name}</option>
             ))}
           </select>
         </span>
       </div>
-      <div className="flex items-stretch pb-5">
+      <div className="flex items-stretch pb-8">
         <span className="text-blue-900 font-bold text-md w-2/6">
         Home Station
         </span>
         <span className="flex w-4/6 justify-end">
-          <select onChange={(event)=>{setHomeStation(event.target.value)}} defaultValue={homeStation}>
+          <select onChange={(event)=>{setHomeStation(event.target.value)}} defaultValue={homeStation} >
             {homeStations.map(station=>(
                 <option key={station.Station_ID} value={station.Station_Name}>{station.Station_Name}</option>
             ))}
           </select>
         </span>
       </div>
-      <button onClick={saveChanges} className="bg-gray-300 border-gray-500 border-solid border-2 shadow-md mt-3 p-1">Save</button>
+      <div className="flex flex-row justify-between">
+        <button onClick={saveChanges} className="text-gray-900 w-auto bg-gray-300 border-gray-500 border-solid border-2 shadow-md mt-4 p-1">Save Changes</button>
+        <button onClick={discardChanges} className="text-gray-900 w-auto bg-gray-300 border-gray-500 border-solid border-2 shadow-md mt-4 p-1">Undo Changes</button>
+      </div>
     </div>
   )
           }
@@ -124,8 +131,8 @@ function TrainInfo(startStation, endStation) {
       {data.map(time=>(
         <div className="flex flex-row pb-3 pt-3 pr-3 pl-3 mb-5 bg-gray-100 shadow-md">
           <span className="flex flex-col w-4/5 ">
-            <div className="w-full text-gray-900 text-xl pb-1">Departs: {time.orig_departure_time}</div>
-            <div className="w-full text-gray-900 text-lg">Arrives:{time.orig_arrival_time}</div>
+            <div className="w-full text-gray-800 text-xl pb-1">Departs: {time.orig_departure_time}</div>
+            <div className="w-full text-gray-800 text-md pl-3">Arrives: {time.orig_arrival_time}</div>
           </span>
           <span className="flex w-1/5 justify-end text-lg">
             {Delay(time.orig_delay)}
@@ -176,20 +183,20 @@ function App() {
         <div>{ConfigScreen(showConfig, line, homeStation, workStation, setHomeStation, setWorkStation, setLine, setCookie, setShowConfig)}</div>
         <div>
           <div className="flex flex-col pb-5 pt-5">
-            <h1 className="text-blue-900 font-bold text-xl text-center">
-            {homeStation} to {workStation}:
+            <h1 className="text-blue-900 font-bold text-2xl text-center">
+                {homeStation} to {workStation}
             </h1>
             {TrainInfo(homeStation, workStation)}
           </div>
           <div className="flex flex-col">
-            <h1 className="text-blue-900 font-bold text-xl text-center">
-            {workStation} to {homeStation}:
+            <h1 className="text-blue-900 font-bold text-2xl text-center">
+            {workStation} to {homeStation}
             </h1>
             {TrainInfo(workStation, homeStation)}
           </div>
         </div>  
         {!showConfig &&
-        <button onClick={() => setShowConfig(true)} className="bg-gray-300 border-gray-400 border-solid border-2 shadow-md mt-3 h-auto p-1">Config</button>
+        <button onClick={() => setShowConfig(true)} className=" text-gray-800 bg-gray-300 border-gray-400 border-solid border-2 shadow-md mt-3 h-auto p-1">Change Stations</button>
         }
     </div>
     </div>
