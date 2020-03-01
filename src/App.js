@@ -134,7 +134,7 @@ function TrainInfo(startStation, endStation) {
             <div className="w-full text-gray-800 text-xl pb-1">Departs: {time.orig_departure_time}</div>
             <div className="w-full text-gray-800 text-md pl-3">Arrives: {time.orig_arrival_time}</div>
           </span>
-          <span className="flex w-1/5 justify-end text-lg">
+          <span className="flex w-1/5 justify-end text-lg items-center">
             {Delay(time.orig_delay)}
           </span>
         </div>
@@ -170,7 +170,7 @@ function App() {
   }
 
   function getInitialWork() {
-    let work = 'Market East';
+    let work = 'Jefferson Station';
     if (cookies.work) {
       work = cookies.work;
     }
