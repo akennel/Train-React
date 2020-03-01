@@ -42,7 +42,7 @@ function ConfigScreen(showConfig, line, homeStation, workStation, setHomeStation
   }
   else {
   return(
-    <div className="bg-gray-400 pr-2 pl-2 pt-2 pb-2">
+    <div className="bg-gray-400 pr-2 pl-2 pt-2 pb-2 shadow-md">
       <div className="flex items-stretch pb-5">
         <span className="flex text-blue-900 font-bold text-md w-2/6">
         Line
@@ -79,7 +79,7 @@ function ConfigScreen(showConfig, line, homeStation, workStation, setHomeStation
           </select>
         </span>
       </div>
-      <button onClick={saveChanges}>Save Changes</button>
+      <button onClick={saveChanges} className="bg-gray-300 border-gray-500 border-solid border-2 shadow-md mt-3 p-1">Save</button>
     </div>
   )
           }
@@ -88,13 +88,17 @@ function ConfigScreen(showConfig, line, homeStation, workStation, setHomeStation
 function Delay(delay) {
   if (delay === 'On time') {
     return (
-      <div className=" border-green-400 border-solid border-2 rounded-full w-6 h-6 text-center align-middle text-green-700 pb-4 bg-green-200">&#x2713;</div>
+      <div className="flex justify-center items-center border-green-400 border-solid border-2 rounded-full w-12 h-12 text-green-700 bg-green-200">
+        &#x2713;
+      </div>
     );
   }
   else {
     delay = delay.replace(" min", "").replace("s", "");
     return (
-      <div className="border-solid border-red-400 border-2 rounded-full w-6 h-6 text-center align-top text-red-700 pb-4 bg-red-200">{delay}</div>
+      <div className="flex justify-center items-center border-solid border-red-400 border-2 rounded-full w-12 h-12 text-red-700 bg-red-200">
+        +{delay}
+      </div>
     );
   }
 }
@@ -117,11 +121,17 @@ function TrainInfo(startStation, endStation) {
   if (data.length > 0) {
   return (
     <React.Fragment>
-      <ul>
       {data.map(time=>(
-        <li key={time.orig_arrival_time}>Departs: {time.orig_departure_time} Arrives:{time.orig_arrival_time} {Delay(time.orig_delay)}</li>
+        <div className="flex flex-row pb-3 pt-3 pr-3 pl-3 mb-5 bg-gray-100 shadow-md">
+          <span className="flex flex-col w-4/5 ">
+            <div className="w-full text-gray-900 text-xl pb-1">Departs: {time.orig_departure_time}</div>
+            <div className="w-full text-gray-900 text-lg">Arrives:{time.orig_arrival_time}</div>
+          </span>
+          <span className="flex w-1/5 justify-end text-lg">
+            {Delay(time.orig_delay)}
+          </span>
+        </div>
       ))}
-      </ul>
     </React.Fragment>
   );
   }
@@ -166,20 +176,20 @@ function App() {
         <div>{ConfigScreen(showConfig, line, homeStation, workStation, setHomeStation, setWorkStation, setLine, setCookie, setShowConfig)}</div>
         <div>
           <div className="flex flex-col pb-5 pt-5">
-            <h1 className="text-blue-900 font-bold text-lg text-center">
+            <h1 className="text-blue-900 font-bold text-xl text-center">
             {homeStation} to {workStation}:
             </h1>
             {TrainInfo(homeStation, workStation)}
           </div>
           <div className="flex flex-col">
-            <h1 className="text-blue-900 font-bold text-lg text-center">
+            <h1 className="text-blue-900 font-bold text-xl text-center">
             {workStation} to {homeStation}:
             </h1>
             {TrainInfo(workStation, homeStation)}
           </div>
         </div>  
         {!showConfig &&
-        <button onClick={() => setShowConfig(true)} className="pt-10">Config</button>
+        <button onClick={() => setShowConfig(true)} className="bg-gray-300 border-gray-400 border-solid border-2 shadow-md mt-3 h-auto p-1">Config</button>
         }
     </div>
     </div>
