@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import $ from 'jquery';
 import { useCookies } from 'react-cookie';
+import {PullToRefresh} from "react-js-pull-to-refresh";
 
 function ConfigScreen(showConfig, line, homeStation, workStation, setHomeStation, setWorkStation, setLine, setCookie, setShowConfig) {
   const lines = require("./assets/lines.json");
@@ -177,11 +178,28 @@ function App() {
     return work;
   }
 
+  function onRefresh() {
+    window.location.reload(false);
+  }
+
   return (      
     <div className="container mx-auto pr-5 pl-5 pt-5">
       <div className="">
         <div>{ConfigScreen(showConfig, line, homeStation, workStation, setHomeStation, setWorkStation, setLine, setCookie, setShowConfig)}</div>
         <div>
+          <div className={"lg:invisible"}>
+            <PullToRefresh
+                pullDownThreshold={200}
+                onRefresh={onRefresh}
+                triggerHeight={50}
+                backgroundColor='white'
+                startInvisible={true}            
+            >
+                <div className={"text-gray-400 font-thin h-5 text-center"}>
+                  <div>Pull To Refresh</div>
+                  </div>
+            </PullToRefresh>
+          </div>
           <div className="flex flex-col pb-5 pt-5">
             <h1 className="text-blue-900 font-bold text-2xl text-center">
                 {homeStation} to {workStation}
