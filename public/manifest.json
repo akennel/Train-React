@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Septa Status",
+  "name": "Septa Regional Rail Status App",
   "icons": [
     {
       "src": "favicon.ico",
@@ -9,6 +9,11 @@
     },
     {
       "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "Septa192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
