@@ -113,6 +113,7 @@ function Delay(delay) {
 
 function TrainInfo(startStation, endStation) {
   const [data, setData] = useState([]);
+  const [called, setCalled] = useState(false);
 
   async function getTrainTimes() {
     let API =  "https://www3.septa.org/hackathon/NextToArrive/?req1=" + startStation +"&req2=" + endStation + "&req3=2&callback=?";
@@ -120,8 +121,9 @@ function TrainInfo(startStation, endStation) {
     setData(data);
   }
 
-  if (data.length === 0) {
+  if (data.length === 0 && called !== true) {
     getTrainTimes();
+    setCalled(true);
     return( <div>Loading...</div>);
   }
 
