@@ -32,9 +32,10 @@ function ConfigScreen(showConfig, line, homeStation, workStation, setHomeStation
   }
 
   function saveChanges() {
-    setCookie('line', line);
-    setCookie('home', homeStation);
-    setCookie('work', workStation);
+    const now = new Date();
+    setCookie('line', line, {path: '/', expires: new Date(now.setFullYear(now.getFullYear() + 1))});
+    setCookie('home', homeStation, {path: '/', expires: new Date(now.setFullYear(now.getFullYear() + 1))});
+    setCookie('work', workStation, {path: '/', expires: new Date(now.setFullYear(now.getFullYear() + 1))});
     setShowConfig(false);
   }
 
