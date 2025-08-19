@@ -102,6 +102,13 @@ function Delay(delay) {
       </div>
     );
   }
+  else if (delay === '999 mins') {
+    return (
+      <div className="flex justify-center items-center border-solid border-red-400 border-2 rounded-full w-12 h-12 text-red-700 bg-red-200">
+         &#x0078;
+      </div>
+    );
+  }
   else {
     delay = delay.replace(" min", "").replace("s", "");
     return (
