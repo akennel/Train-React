@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import $ from 'jquery';
 import { useCookies } from 'react-cookie';
 import {PullToRefresh} from "react-js-pull-to-refresh";
 
@@ -125,9 +124,9 @@ function TrainInfo(startStation, endStation) {
   const [called, setCalled] = useState(false);
 
   async function getTrainTimes() {
-    let API =  "https://www3.septa.org/api/NextToArrive/index.php?req1=" + startStation +"&req2=" + endStation + "&req3=2&callback=?";
-    let data = await $.getJSON(API);
-    setData(data);
+    const response = await fetch(`/.netlify/functions/get-train?start=${encodeURIComponent(startStation)}&end=${encodeURIComponent(endStation)}`);
+    const result = JSON.parse(await response.text());
+    setData(result.data);
   }
 
   if (data.length === 0 && called !== true) {
