@@ -125,7 +125,7 @@ function TrainInfo(startStation, endStation) {
   const [called, setCalled] = useState(false);
 
   async function getTrainTimes() {
-    let API =  "https://www3.septa.org/hackathon/NextToArrive/?req1=" + startStation +"&req2=" + endStation + "&req3=2&callback=?";
+    let API =  "https://www3.septa.org/api/NextToArrive/index.php?req1=" + startStation +"&req2=" + endStation + "&req3=2&callback=?";
     let data = await $.getJSON(API);
     setData(data);
   }
