@@ -119,14 +119,46 @@ function Delay(delay) {
 }
 
 
+function TrainCars(count) {
+  if (!count || count === 0) return null;
+  return (
+    <div className="flex items-center gap-px">
+      {Array.from({ length: count }, (_, i) => (
+        <div key={i} className="bg-gray-600" style={{ width: '10px', height: '5px' }} />
+      ))}
+    </div>
+  );
+}
+
 function TrainInfo(startStation, endStation) {
   const [data, setData] = useState([]);
+  const [trainDetails, setTrainDetails] = useState([]);
   const [called, setCalled] = useState(false);
 
   async function getTrainTimes() {
-    const response = await fetch(`/.netlify/functions/get-train?start=${encodeURIComponent(startStation)}&end=${encodeURIComponent(endStation)}`);
-    const result = JSON.parse(await response.text());
-    setData(result.data);
+    const [trainResponse, detailsResponse] = await Promise.all([
+      fetch(`/.netlify/functions/get-train?start=${encodeURIComponent(startStation)}&end=${encodeURIComponent(endStation)}`),
+      fetch('/.netlify/functions/get-train-details')
+    ]);
+    const trainResult = JSON.parse(await trainResponse.text());
+    const detailsResult = JSON.parse(await detailsResponse.text());
+    console.log('get-train result:', trainResult);
+    console.log('get-train-details result:', detailsResult);
+    setData(trainResult.data);
+    setTrainDetails(detailsResult.data);
+  }
+
+  function getCarCount(trainNo) {
+    console.log('trainDetails length:', trainDetails.length, 'trainDetails:', trainDetails);
+    console.log('looking for trainNo:', trainNo, 'type:', typeof trainNo);
+    const train = trainDetails.find(t => t.trainno === trainNo);
+    console.log('found:', train);
+    if (train && train.consist) {
+      const count = train.consist.split(',').filter(c => c.trim()).length;
+      console.log('car count:', count);
+      return count;
+    }
+    return 0;
   }
 
   if (data.length === 0 && called !== true) {
@@ -135,17 +167,24 @@ function TrainInfo(startStation, endStation) {
     return( <div>Loading...</div>);
   }
 
+  if (data.length === 0 || trainDetails.length === 0) {
+    return( <div>Loading...</div>);
+  }
+
   if (data.length > 0) {
   return (
     <React.Fragment>
       {data.map(time=>(
-        <div className="flex flex-row pb-3 pt-3 pr-3 pl-3 mb-5 bg-gray-100 shadow-md">
-          <span className="flex flex-col w-4/5 ">
-            <div className="w-full text-gray-800 text-xl pb-1">Departs: {time.orig_departure_time}</div>
-            <div className="w-full text-gray-800 text-md pl-3">Arrives: {time.orig_arrival_time}</div>
+        <div key={time.orig_train} className="flex flex-row pb-3 pt-3 pr-3 pl-3 mb-5 bg-gray-100 shadow-md justify-between">
+          <span className="flex flex-col">
+            <div className="text-gray-800 text-xl pb-1">Departs: {time.orig_departure_time}</div>
+            <div className="text-gray-800 text-md pl-3">Arrives: {time.orig_arrival_time}</div>
           </span>
-          <span className="flex w-1/5 justify-end text-lg items-center">
+          <span className="flex flex-col items-center justify-center">
             {Delay(time.orig_delay)}
+            <div className="mt-1">
+              {TrainCars(getCarCount(time.orig_train))}
+            </div>
           </span>
         </div>
       ))}
