@@ -13,9 +13,6 @@
     "react-js-pull-to-refresh": "^1.2.2",
     "react-scripts": "3.4.0"
   },
-  "engines": {
-    "node": "18.x"
-  },
   "scripts": {
     "start": "npm run watch:css && NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
     "build": "npm run build:css && NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
