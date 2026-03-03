@@ -4,15 +4,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Train-React is a Progressive Web App for tracking SEPTA (Southeastern Pennsylvania Transportation Authority) regional rail status. It displays real-time train schedules between a user's home station and work station using the SEPTA Hackathon API.
+Train-React is a Progressive Web App for tracking SEPTA (Southeastern Pennsylvania Transportation Authority) regional rail status. It displays real-time train schedules between a user's home station and work station using the SEPTA API, proxied through Netlify Functions.
 
 ## Development Commands
 
 ```bash
-npm start       # Start development server with Tailwind CSS watch (serves at localhost:3000)
-npm test        # Run tests in interactive watch mode
-npm run build   # Production build with CSS compilation
+npm start           # Build CSS and start CRA dev server (localhost:3000)
+netlify dev         # Start full dev environment with Netlify Functions (localhost:8888) — use this for local development
+npm test            # Run tests in interactive watch mode
+npm run build       # Production build with CSS compilation
 ```
+
+> **Note:** The app calls `/.netlify/functions/*` endpoints, so `netlify dev` is required for local full-stack development. `npm start` alone will cause API calls to fail.
 
 ## Architecture
 
@@ -20,19 +23,33 @@ This is a single-file React application built with Create React App. All applica
 
 - **App** - Main component managing state (line, stations) and cookie-based persistence
 - **ConfigScreen** - Settings modal for selecting rail line and stations
-- **TrainInfo** - Fetches and displays schedules from SEPTA API
+- **TrainInfo** - Fetches and displays schedules via Netlify Function proxy
+- **TrainCars** - Visual indicator of train consist length (number of cars)
 - **Delay** - Visual delay indicator (green checkmark, red X, or delay minutes)
 
 **Key data files:**
 - `src/assets/lines.json` - SEPTA rail lines (13 lines)
 - `src/assets/stations.json` - Station data with line associations
 
-**External API:** `https://www3.septa.org/hackathon/NextToArrive/{origin}/{destination}/{count}` (JSONP)
+**Netlify Functions (backend proxy):**
+- `netlify/functions/get-train.js` — Proxies `NextToArrive` API: `GET /.netlify/functions/get-train?start=...&end=...`
+- `netlify/functions/get-train-details.js` — Proxies `TrainView` API for consist data: `GET /.netlify/functions/get-train-details`
+
+**External APIs (called server-side from Netlify Functions):**
+- `https://www3.septa.org/api/NextToArrive/index.php?req1={origin}&req2={destination}&req3=2`
+- `https://www3.septa.org/api/TrainView/index.php`
 
 ## Tech Stack
 
 - React 16.13.0 with hooks (useState)
-- Tailwind CSS 1.2.0 for styling
+- Tailwind CSS 1.2.0 for styling (compiled via PostCSS)
 - react-cookie for persisting user preferences
-- jQuery for JSONP API requests
 - react-js-pull-to-refresh for mobile refresh UX
+- Netlify Functions (`@netlify/functions`) as a serverless API proxy
+- NODE_OPTIONS=--openssl-legacy-provider required for CRA build with newer Node versions
+
+## Deployment
+
+Deployed on Netlify. Config in `netlify.toml`:
+- Functions directory: `netlify/functions`
+- Dev command: `npm start` on port 3000, served via Netlify dev on port 8888
