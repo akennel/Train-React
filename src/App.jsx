@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import { PullToRefresh } from "react-js-pull-to-refresh";
+import lines from './assets/lines.json';
+import stations from './assets/stations.json';
 
 function ConfigScreen({ showConfig, line, homeStation, workStation, setHomeStation, setWorkStation, setLine, setCookie, setShowConfig }) {
-  const lines = require("./assets/lines.json");
-  const stations = require('./assets/stations.json');
   const ccStations = [90004, 90005, 90006, 90007];
   const [homeStations, setHome] = useState(getStations(line, true));
   const [workStations, setWork] = useState(getStations(line, false));
