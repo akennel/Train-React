@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useCookies } from 'react-cookie';
-import { PullToRefresh } from "react-js-pull-to-refresh";
 import lines from './assets/lines.json';
 import stations from './assets/stations.json';
 
@@ -199,6 +198,46 @@ function TrainInfo({ startStation, endStation }) {
   );
 }
 
+function usePullToRefresh(onRefresh, threshold = 80) {
+  const startY = useRef(0);
+  const pullDistanceRef = useRef(0);
+  const [pullDistance, setPullDistance] = useState(0);
+
+  useEffect(() => {
+    function onTouchStart(e) {
+      if (window.scrollY === 0) {
+        startY.current = e.touches[0].clientY;
+      }
+    }
+    function onTouchMove(e) {
+      if (!startY.current) return;
+      const delta = e.touches[0].clientY - startY.current;
+      if (delta > 0) {
+        const clamped = Math.min(delta, threshold + 20);
+        pullDistanceRef.current = clamped;
+        setPullDistance(clamped);
+      }
+    }
+    function onTouchEnd() {
+      if (pullDistanceRef.current >= threshold) onRefresh();
+      pullDistanceRef.current = 0;
+      setPullDistance(0);
+      startY.current = 0;
+    }
+
+    document.addEventListener('touchstart', onTouchStart, { passive: true });
+    document.addEventListener('touchmove', onTouchMove, { passive: true });
+    document.addEventListener('touchend', onTouchEnd);
+    return () => {
+      document.removeEventListener('touchstart', onTouchStart);
+      document.removeEventListener('touchmove', onTouchMove);
+      document.removeEventListener('touchend', onTouchEnd);
+    };
+  }, [onRefresh, threshold]);
+
+  return { pullDistance, ready: pullDistance >= threshold };
+}
+
 function App() {
   const [cookies, setCookie] = useCookies(['line', 'home', 'work']);
   const [homeStation, setHomeStation] = useState(cookies.home || 'East Falls');
@@ -209,6 +248,8 @@ function App() {
   function onRefresh() {
     window.location.reload(false);
   }
+
+  const { pullDistance, ready } = usePullToRefresh(onRefresh);
 
   return (
     <div className="container mx-auto pr-5 pl-5 pt-5">
@@ -227,18 +268,10 @@ function App() {
           />
         </div>
         <div>
-          <div className={"lg:invisible"}>
-            <PullToRefresh
-              pullDownThreshold={200}
-              onRefresh={onRefresh}
-              triggerHeight={50}
-              backgroundColor='white'
-              startInvisible={true}
-            >
-              <div className={"text-gray-400 font-thin h-5 text-center"}>
-                <div>Pull To Refresh</div>
-              </div>
-            </PullToRefresh>
+          <div className="lg:invisible">
+            <div className="text-gray-400 font-thin h-5 text-center">
+              {pullDistance > 0 ? (ready ? 'Release to refresh' : 'Pull to refresh') : 'Pull to refresh'}
+            </div>
           </div>
           <div className="flex flex-col pb-5 pt-5">
             <h1 className="text-blue-900 font-bold text-2xl text-center">
