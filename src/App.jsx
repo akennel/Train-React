@@ -12,11 +12,9 @@ function getStations(line, includeCC) {
   return stations.filter(s => s.Station_Line.indexOf(line) >= 0 && CC_STATIONS.indexOf(s.Station_ID) >= 0);
 }
 
-function ConfigScreen({ showConfig, line, homeStation, workStation, setHomeStation, setWorkStation, setLine, setCookie, setShowConfig }) {
+function ConfigScreen({ line, homeStation, workStation, setHomeStation, setWorkStation, setLine, setCookie, setShowConfig }) {
   const [homeStations, setHome] = useState(getStations(line, true));
   const [workStations, setWork] = useState(getStations(line, false));
-
-  if (!showConfig) return null;
 
   function changeLine(event) {
     const newLine = event.target.selectedOptions[0].id;
@@ -251,20 +249,18 @@ function App() {
 
   return (
     <div className="container mx-auto pr-5 pl-5 pt-5">
-      <div className="">
-        <div>
-          <ConfigScreen
-            showConfig={showConfig}
-            line={line}
-            homeStation={homeStation}
-            workStation={workStation}
-            setHomeStation={setHomeStation}
-            setWorkStation={setWorkStation}
-            setLine={setLine}
-            setCookie={setCookie}
-            setShowConfig={setShowConfig}
-          />
-        </div>
+      {showConfig ? (
+        <ConfigScreen
+          line={line}
+          homeStation={homeStation}
+          workStation={workStation}
+          setHomeStation={setHomeStation}
+          setWorkStation={setWorkStation}
+          setLine={setLine}
+          setCookie={setCookie}
+          setShowConfig={setShowConfig}
+        />
+      ) : (
         <div>
           <div className="lg:invisible">
             <div className="text-gray-400 font-thin h-5 text-center">
@@ -283,11 +279,9 @@ function App() {
             </h1>
             <TrainInfo startStation={workStation} endStation={homeStation} trainDetailsMap={trainDetailsMap} />
           </div>
-        </div>
-        {!showConfig &&
           <button onClick={() => setShowConfig(true)} className="text-gray-800 bg-gray-300 border-gray-400 border-solid border-2 shadow-md mt-3 h-auto p-1">Change Stations</button>
-        }
-      </div>
+        </div>
+      )}
     </div>
   );
 }
