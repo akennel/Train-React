@@ -1,19 +1,22 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useCookies } from 'react-cookie';
 import lines from './assets/lines.json';
 import stations from './assets/stations.json';
 
+const CC_STATIONS = [90004, 90005, 90006, 90007];
+
+function getStations(line, includeCC) {
+  if (includeCC) {
+    return stations.filter(s => s.Station_Line.indexOf(line) >= 0 && CC_STATIONS.indexOf(s.Station_ID) < 0);
+  }
+  return stations.filter(s => s.Station_Line.indexOf(line) >= 0 && CC_STATIONS.indexOf(s.Station_ID) >= 0);
+}
+
 function ConfigScreen({ showConfig, line, homeStation, workStation, setHomeStation, setWorkStation, setLine, setCookie, setShowConfig }) {
-  const ccStations = [90004, 90005, 90006, 90007];
   const [homeStations, setHome] = useState(getStations(line, true));
   const [workStations, setWork] = useState(getStations(line, false));
 
-  function getStations(line, includeCC) {
-    if (includeCC) {
-      return stations.filter(station => (station.Station_Line.indexOf(line) >= 0) && (ccStations.indexOf(station.Station_ID) < 0));
-    }
-    return stations.filter(station => (station.Station_Line.indexOf(line) >= 0) && (ccStations.indexOf(station.Station_ID) >= 0));
-  }
+  if (!showConfig) return null;
 
   function changeLine(event) {
     const newLine = event.target.selectedOptions[0].id;
@@ -23,23 +26,16 @@ function ConfigScreen({ showConfig, line, homeStation, workStation, setHomeStati
   }
 
   function saveChanges() {
-    const oneYearFromNow = () => {
-      const d = new Date();
-      d.setFullYear(d.getFullYear() + 1);
-      return d;
-    };
-    setCookie('line', line, { path: '/', expires: oneYearFromNow() });
-    setCookie('home', homeStation, { path: '/', expires: oneYearFromNow() });
-    setCookie('work', workStation, { path: '/', expires: oneYearFromNow() });
+    const expires = new Date();
+    expires.setFullYear(expires.getFullYear() + 1);
+    setCookie('line', line, { path: '/', expires });
+    setCookie('home', homeStation, { path: '/', expires });
+    setCookie('work', workStation, { path: '/', expires });
     setShowConfig(false);
   }
 
   function discardChanges() {
     window.location.reload(false);
-  }
-
-  if (!showConfig) {
-    return <React.Fragment></React.Fragment>;
   }
 
   return (
@@ -122,9 +118,8 @@ function TrainCars({ count }) {
   );
 }
 
-function TrainInfo({ startStation, endStation }) {
+function TrainInfo({ startStation, endStation, trainDetailsMap }) {
   const [data, setData] = useState([]);
-  const [trainDetails, setTrainDetails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -132,14 +127,9 @@ function TrainInfo({ startStation, endStation }) {
     setLoading(true);
     setError(null);
     try {
-      const [trainResponse, detailsResponse] = await Promise.all([
-        fetch(`/.netlify/functions/get-train?start=${encodeURIComponent(startStation)}&end=${encodeURIComponent(endStation)}`),
-        fetch('/.netlify/functions/get-train-details')
-      ]);
-      const trainResult = JSON.parse(await trainResponse.text());
-      const detailsResult = JSON.parse(await detailsResponse.text());
-      setData(trainResult.data);
-      setTrainDetails(detailsResult.data);
+      const response = await fetch(`/.netlify/functions/get-train?start=${encodeURIComponent(startStation)}&end=${encodeURIComponent(endStation)}`);
+      const result = await response.json();
+      setData(result.data);
     } catch (err) {
       setError('Failed to load train times. Please try again.');
     } finally {
@@ -152,10 +142,8 @@ function TrainInfo({ startStation, endStation }) {
   }, [startStation, endStation]);
 
   function getCarCount(trainNo) {
-    const train = trainDetails.find(t => t.trainno === trainNo);
-    if (train && train.consist) {
-      return train.consist.split(',').filter(c => c.trim()).length;
-    }
+    const consist = trainDetailsMap.get(trainNo);
+    if (consist) return consist.split(',').filter(c => c.trim()).length;
     return 0;
   }
 
@@ -244,10 +232,20 @@ function App() {
   const [workStation, setWorkStation] = useState(cookies.work || 'Jefferson Station');
   const [line, setLine] = useState(cookies.line || 'NOR');
   const [showConfig, setShowConfig] = useState(false);
+  const [trainDetailsMap, setTrainDetailsMap] = useState(new Map());
 
-  function onRefresh() {
+  useEffect(() => {
+    fetch('/.netlify/functions/get-train-details')
+      .then(r => r.json())
+      .then(result => {
+        setTrainDetailsMap(new Map(result.data.map(t => [t.trainno, t.consist])));
+      })
+      .catch(() => {}); // non-critical — car counts just won't show
+  }, []);
+
+  const onRefresh = useCallback(() => {
     window.location.reload(false);
-  }
+  }, []);
 
   const { pullDistance, ready } = usePullToRefresh(onRefresh);
 
@@ -277,13 +275,13 @@ function App() {
             <h1 className="text-blue-900 font-bold text-2xl text-center">
               {homeStation} to {workStation}
             </h1>
-            <TrainInfo startStation={homeStation} endStation={workStation} />
+            <TrainInfo startStation={homeStation} endStation={workStation} trainDetailsMap={trainDetailsMap} />
           </div>
           <div className="flex flex-col">
             <h1 className="text-blue-900 font-bold text-2xl text-center">
               {workStation} to {homeStation}
             </h1>
-            <TrainInfo startStation={workStation} endStation={homeStation} />
+            <TrainInfo startStation={workStation} endStation={homeStation} trainDetailsMap={trainDetailsMap} />
           </div>
         </div>
         {!showConfig &&
